@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Sensor Data Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .sensor {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>IoT Sensor Data Simulation</h1>
+    <div class="sensor">
+        <strong>Temperature:</strong> <span id="temperature"></span> °C
+    </div>
+    <div class="sensor">
+        <strong>Humidity:</strong> <span id="humidity"></span> %
+    </div>
+    <div class="sensor">
+        <strong>Light Level:</strong> <span id="light"></span> lumens
+    </div>
+
+    <script>
+        function simulateSensorData() {
+            // Simulate sensor data
+            const temperature = (Math.random() * (30 - 20) + 20).toFixed(2); // temperature in Celsius
+            const humidity = (Math.random() * (60 - 40) + 40).toFixed(2);    // humidity in %
+            const lightLevel = Math.floor(Math.random() * (800 - 100) + 100); // light level in lumens
+
+            // Update the webpage with new data
+            document.getElementById('temperature').textContent = temperature;
+            document.getElementById('humidity').textContent = humidity;
+            document.getElementById('light').textContent = lightLevel;
+        }
+
+        // Update sensor data every second
+        setInterval(simulateSensorData, 1000);
+    </script>
+</body>
+</html>
