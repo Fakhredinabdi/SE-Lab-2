@@ -1,4 +1,3 @@
-// services/ValidationService.java
 package edu.sharif.selab.services;
 
 public interface ValidationService {
