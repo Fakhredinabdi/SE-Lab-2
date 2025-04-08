@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MessageServiceFactory {
-    private final Map<String, MessageService<?>> services = new HashMap<>();
+    private final Map<String, MessageService> services = new HashMap<>();
 
     public MessageServiceFactory() {
         registerServices();
@@ -21,7 +21,7 @@ public class MessageServiceFactory {
         services.put("telegram", new TelegramMessageService());
     }
 
-    public MessageService<?> getMessageService(String serviceType) {
+    public MessageService getMessageService(String serviceType) {
         return services.get(serviceType.toLowerCase());
     }
 }

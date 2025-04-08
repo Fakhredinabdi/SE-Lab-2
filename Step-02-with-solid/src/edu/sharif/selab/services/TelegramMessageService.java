@@ -1,17 +1,22 @@
-// services/TelegramMessageService.java
 package edu.sharif.selab.services;
 
+import edu.sharif.selab.models.Message;
 import edu.sharif.selab.models.TelegramMessage;
 
-public class TelegramMessageService implements MessageService<TelegramMessage>, ValidationService {
+public class TelegramMessageService implements MessageService, ValidationService {
     @Override
-    public void send(TelegramMessage message) {
-        System.out.println("Sending Telegram message from " + message.getSourceId()
-                + " to " + message.getTargetId());
+    public void send(Message message) {
+        sendTelegramMessage((TelegramMessage) message);
+    }
+
+    public void sendTelegramMessage(TelegramMessage telegramMessage) {
+        if (validate(telegramMessage.getSourceId()) && validate(telegramMessage.getTargetId())) {
+            System.out.println("Sending Telegram message from " + telegramMessage.getSourceId() + " to " + telegramMessage.getTargetId() + " with content: " + telegramMessage.getContent());
+        }
     }
 
     @Override
     public boolean validate(String telegramId) {
-        return telegramId.matches("^@[a-zA-Z0-9_]{5,32}$");
+        return telegramId.matches("^[a-zA-Z][a-zA-Z0-9_]{4,31}$");
     }
 }
